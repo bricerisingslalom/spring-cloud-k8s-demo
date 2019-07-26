@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-cloud-k8s-demo
+  cloud:
+    kubernetes:
+      config:
+        name: spring-cloud-k8s-demo-configs
+demo:
+  configmap:
+    value: test

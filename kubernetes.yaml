@@ -35,3 +35,10 @@ spec:
               cpu: .5
           ports:
             - containerPort: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-cloud-k8s-demo
+data:
+  demo.configmap.value: 'Config pulled from a ConfigMap'
