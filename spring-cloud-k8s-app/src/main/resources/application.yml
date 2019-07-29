@@ -4,3 +4,7 @@ spring:
 demo:
   configmap:
     value: test
+ribbon:
+  http:
+    client:
+      enabled: true

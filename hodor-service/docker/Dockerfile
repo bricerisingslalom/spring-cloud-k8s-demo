@@ -7,7 +7,7 @@ RUN cd /hodor-service ; npm install
 
 # Add project files
 ADD . /hodor-service
-WORKDIR hodor-service
+WORKDIR /hodor-service
 
 EXPOSE 8081
 ENTRYPOINT [ "npm", "start" ]
