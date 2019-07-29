@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-cloud-k8s-app
+demo:
+  configmap:
+    value: test
