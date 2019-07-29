@@ -15,6 +15,8 @@ public class DemoController {
     private String configValue;
     @Autowired
     private DiscoveryClient discoveryClient;
+    @Autowired
+    private HodorService hodorService;
 
 
     @RequestMapping("/status")
@@ -28,6 +30,10 @@ public class DemoController {
     @RequestMapping("/services")
     public List<String> services() {
         return discoveryClient.getServices();
+    }
+    @RequestMapping("/hodor")
+    public String hodor() {
+        return hodorService.getHodor();
     }
 
 }

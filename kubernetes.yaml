@@ -13,6 +13,20 @@ spec:
       port: 8080
       targetPort: 8080
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hodor-service-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: hodor-service
+  ports:
+    - name: hodor-service-port
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -35,6 +49,29 @@ spec:
               cpu: .5
           ports:
             - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hodor-service-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hodor-service
+        version: "1.0"
+    spec:
+      containers:
+        - name: hodor-service
+          image: docker.io/bricerisingslalom/hodor-service:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 100Mi
+              cpu: .1
+          ports:
+            - containerPort: 8081
 ---
 apiVersion: v1
 kind: ConfigMap
